@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flybrain"
+version = "0.1.0"
+description = "The complete fruit fly nervous system (MaleCNS connectome, 166,700 neurons) as a spiking network, on CPU or GPU."
+readme = "PACKAGE.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "alextitonis" }]
+keywords = ["connectome", "drosophila", "spiking neural network", "neuroscience", "reservoir computing"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "numba>=0.61",
+]
+
+[project.optional-dependencies]
+gpu = ["cupy-cuda12x[ctk]>=13"]
+build = ["pandas>=2.2", "pyarrow>=15"]
+
+[project.scripts]
+flybrain = "flybrain.__main__:main"
+
+[project.urls]
+Homepage = "https://flyaiworld.com"
+Source = "https://github.com/alextitonis/fly.ai"
+
+[tool.setuptools]
+packages = ["flybrain"]

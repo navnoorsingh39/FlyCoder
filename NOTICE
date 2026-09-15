@@ -1,0 +1,44 @@
+# Notices
+
+This repository combines several works. Keep these notices when you redistribute.
+
+## fly.ai / FlyBrain
+
+The `flybrain/` package and the original MIT license text in `LICENSE` are from
+[fly.ai](https://github.com/alextitonis/fly.ai) (Copyright (c) 2026 alextitonis).
+
+FlyCoder is an independent experiment that *uses* FlyBrain. It does not replace,
+retrain, or rewrite MaleCNS connectivity.
+
+## FlyCoder
+
+The `flycoder/` package, dashboard, documentation, and original FlyCoder icon
+are additional original work in this repository, released under the same MIT
+license as `LICENSE`.
+
+## MaleCNS dataset
+
+MaleCNS v1.0 connectome data is **not** stored in this repository. It remains
+under [CC BY 4.0](https://male-cns.janelia.org/download/).
+
+`python -m flybrain download` fetches a prebuilt FlyBrain network (~260 MB)
+derived from that dataset into `~/fly-data` (or `$FLY_DATA`). If you use the
+connectome data, cite Berg et al. (2026) and follow the MaleCNS attribution
+terms.
+
+## Three.js
+
+`flycoder/dashboard/vendor/three.min.js` is [Three.js](https://github.com/mrdoob/three.js)
+r160, MIT License, Copyright © 2010-2024 three.js authors.
+
+## FlyCoder icon
+
+The FlyCoder mark (`flycoder/dashboard/flycoder-icon.svg` and raster favicons)
+is original geometry created for this project. It is not copied from Google,
+Janelia, DeepMind, or other third-party brands.
+
+## Affiliation
+
+FlyCoder is an independent experimental project and is not affiliated with
+Google, Google DeepMind, HHMI Janelia, the University of Cambridge, MRC LMB,
+or the MaleCNS authors.

@@ -1,0 +1,90 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Local FlyBrain / MaleCNS downloads (not part of this repository)
+fly-data/
+downloads/
+data/raw/
+*.feather
+*.npz
+*.npy
+*.bin
+readout.npz
+
+# Logs / temp
+*.log
+tmp/
+temp/
+logs/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.cursor/
+
+# Recordings not intended for the public tree
+recordings/
+recordings/raw/
+docs/media/_raw/
+docs/media/_palette.png
+
+# Packaging / deploy leftovers
+.vercel/
+.vercel-out/
+
+# Never commit secrets
+*.pem
+id_*
+*.key
+
+# Local fly.ai checkout extras (this working copy may contain them; they are not FlyCoder)
+/sshfighter/
+/flybook/
+/world/
+/wiz/
+/talk/
+/talk-2ms/
+/talk-fix/
+/valentfly/
+/voices/
+/models/
+/notebooks/
+/skills/
+/billboard/
+/TOKEN.md
+/logo.webp
+/experiment.py
+/inject.py
+/sweep.py
+/flybook.py
+/flytalk.py
+/flyreservoir_example.py
+/vercel.json
+/docs/agents.html
+/docs/index.html
+/docs/llms.txt
+/docs/research.html
+/docs/roadmap.html
+/docs/token.html
+/docs/assets/
+/docs/research/
+/docs/*.html

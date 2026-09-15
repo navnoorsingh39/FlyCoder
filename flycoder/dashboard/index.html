@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FLYCODER — MaleCNS experiment / 001</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/flycoder-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+  <header>
+    <div class="hdr-left">
+      <h1>FLYCODER</h1>
+      <span class="exp-id">MALECNS EXPERIMENT / 001</span>
+    </div>
+    <p class="hdr-center" id="hdr-center">166,700 NEURONS TRYING TO CENTER A DIV</p>
+    <div class="hdr-right">
+      <div class="status" id="status"><i></i><span>CONNECTOME LOADING</span></div>
+      <span class="status-sub">REAL CONNECTOME · WEIGHTS FROZEN</span>
+      <span class="map-flag">INTERFACE MAPPING: EXPERIMENTAL</span>
+    </div>
+  </header>
+
+  <div class="toolbar hide-shot" id="toolbar">
+    <nav class="stages" id="stages" aria-label="experiment stage">
+      <span data-stage="OBSERVE">OBSERVE</span>
+      <span data-stage="STIMULATE">STIMULATE</span>
+      <span data-stage="PROPAGATE">PROPAGATE</span>
+      <span data-stage="READOUT">READOUT</span>
+      <span data-stage="ACTION">ACTION</span>
+      <span data-stage="EVALUATE">EVALUATE</span>
+    </nav>
+    <div class="controls" role="group" aria-label="experiment controls">
+      <button type="button" id="btn-start" disabled>START EXPERIMENT</button>
+      <button type="button" id="btn-pause" disabled>PAUSE</button>
+      <button type="button" id="btn-reset" disabled>RESET</button>
+      <span class="speed">
+        <button type="button" class="speed-btn on" data-speed="1">1×</button>
+        <button type="button" class="speed-btn" data-speed="2">2×</button>
+        <button type="button" class="speed-btn" data-speed="4">4×</button>
+      </span>
+      <button type="button" id="btn-record">RECORDING MODE</button>
+      <button type="button" id="btn-about" class="ghost rec-hide">ABOUT</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="panel neural" id="neural-panel">
+      <div class="panel-head">
+        <h2>SPATIAL CONNECTOME</h2>
+        <span id="vis-count">real soma positions</span>
+      </div>
+      <div class="brain-stage" id="brainwrap">
+        <canvas id="brain" width="1000" height="1000" aria-label="MaleCNS spatial soma cloud"></canvas>
+        <div class="cns-callout" id="cns-callout" hidden></div>
+        <div class="cns-bridge" id="cns-bridge" aria-hidden="true"></div>
+        <div class="flow-hint" id="flow-hint">
+          SPATIAL CONNECTOME → DESCENDING READOUT → 3D BODY CONTROL
+        </div>
+      </div>
+    </section>
+
+    <section class="panel fly-panel" id="fly-panel">
+      <div class="panel-head">
+        <h2>3D EMBODIED VISUALIZATION</h2>
+        <span>Driven by real FlyCoder neural control signals</span>
+      </div>
+      <div class="fly-stage" id="flywrap">
+        <canvas id="fly3d" aria-label="procedural Drosophila visualization"></canvas>
+        <div class="fly-hud" id="fly-hud">
+          <div class="hud-col">
+            <h3>SENSORY <small>NORMALIZED ACTIVITY</small></h3>
+            <ol id="hud-sensory"></ol>
+          </div>
+          <div class="hud-col">
+            <h3>DESCENDING <small>NORMALIZED ACTIVITY</small></h3>
+            <ol id="hud-desc"></ol>
+          </div>
+        </div>
+        <div class="fly-caption">
+          <b id="fly-mode">SCANNING</b>
+          <span>EXPERIMENTAL MOTOR VISUALIZATION · not biomechanical reconstruction</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel preview">
+      <div class="browser">
+        <div class="browser-bar">
+          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="url">localhost / experiment</span>
+        </div>
+        <div class="stage-wrap">
+          <div class="stage" id="stage">
+            <div class="crosshair-x" id="cx"></div>
+            <div class="crosshair-y" id="cy"></div>
+            <div class="container" id="preview-container">
+              <div class="target" id="preview-target"></div>
+            </div>
+          </div>
+        </div>
+        <div class="offset" id="offset">
+          <span>TARGET OFFSET</span>
+          <b id="off-x">X: —</b>
+          <b id="off-y">Y: —</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel control-col">
+      <div class="panel-head">
+        <h2>CURRENT NEURAL CONTROL</h2>
+        <span id="ctrl-mode">SCANNING</span>
+      </div>
+      <p class="input-line" id="input-line">VISUAL INPUT  —</p>
+      <div class="bars" id="ctrl-bars"></div>
+      <div class="metrics" id="metrics">
+        <div><label>SOURCE NEURONS</label><b id="stat-neurons">166,700</b></div>
+        <div><label>SOURCE CONNECTIONS</label><b id="stat-conn">25,582,938</b></div>
+        <div><label>ACTIVE THIS STEP</label><b id="stat-active">—</b></div>
+        <div><label>BRAIN STEP</label><b id="stat-step">—</b></div>
+        <div><label>CONNECTOME</label><b id="stat-cns">MaleCNS v1.0</b></div>
+        <div><label>WEIGHTS</label><b id="stat-w">FROZEN</b></div>
+      </div>
+    </section>
+
+    <section class="panel editor-col">
+      <div class="code-window">
+        <div class="code-chrome">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="tab">style.css</span>
+          <span class="badge" id="neural-badge" hidden>NEURAL COMMIT</span>
+          <span class="layout-note" id="layout-note" hidden>FLEX LAYOUT ACTIVE</span>
+        </div>
+        <div class="code-body" id="code-body">
+          <div class="gutter" id="gutter"></div>
+          <pre class="code" id="code"></pre>
+        </div>
+      </div>
+      <div class="palette-wrap">
+        <div class="palette-head">
+          <h2>CONNECTOME CONTROLLED ACTION SPACE</h2>
+          <span class="fly-cursor-label" id="fly-cursor-label">● FLY CONTROL</span>
+        </div>
+        <div class="palette" id="palette"></div>
+        <p class="commit-line" id="commit-line" hidden>COMMIT SIGNAL  DNp01 / DNg100</p>
+      </div>
+      <ol class="timeline" id="timeline" aria-label="experiment timeline"></ol>
+    </section>
+
+    <section class="col-right">
+      <section class="panel telem">
+        <h2>NEURAL TELEMETRY</h2>
+        <ol class="log" id="log"></ol>
+      </section>
+      <div class="reward-row">
+        <div class="reward-readout" id="reward-box">
+          <label>REWARD</label>
+          <b id="reward-now">+0.000</b>
+        </div>
+        <canvas id="reward-chart" width="420" height="48" aria-label="reward history"></canvas>
+      </div>
+      <p class="eval-note" id="eval-note" hidden></p>
+      <div class="perf-row">
+        <div class="stat-chip"><label>ATTEMPT</label><b id="stat-attempt">00</b></div>
+        <div class="stat-chip"><label>BRAIN STEPS</label><b id="stat-bsteps">0</b></div>
+        <div class="stat-chip"><label>ELAPSED</label><b id="stat-elapsed">00:00.0</b></div>
+        <div class="stat-chip"><label>BEST ERROR</label><b id="stat-best">—</b></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>MaleCNS v1.0</span>
+    <span class="sep">·</span>
+    <span>REAL CONNECTOME</span>
+    <span class="sep">·</span>
+    <span>166,700 neurons</span>
+    <span class="sep">·</span>
+    <span>25,582,938 connections</span>
+    <span class="sep">·</span>
+    <span>WEIGHTS FROZEN</span>
+    <span class="sep">·</span>
+    <span>INTERFACE MAPPING: EXPERIMENTAL</span>
+  </footer>
+
+  <aside class="intro" id="intro" hidden>
+    <ol id="intro-lines"></ol>
+  </aside>
+
+  <aside class="success-banner" id="success-banner" hidden>TARGET CENTERED · REWARD +1.000</aside>
+
+  <aside class="result-dock" id="overlay" hidden aria-hidden="true">
+    <div class="overlay-card">
+      <p class="done-kicker">DIV CENTERED</p>
+      <p class="done-hero">166,700 neurons.<br>25,582,938 connections.<br>One centered div.</p>
+      <p class="done-note">Frontend engineers remain employed.</p>
+      <dl class="done-stats">
+        <div><dt>Attempts</dt><dd id="fin-attempts">0</dd></div>
+        <div><dt>Brain steps</dt><dd id="fin-steps">0</dd></div>
+        <div><dt>Simulation time</dt><dd id="fin-time">0s</dd></div>
+      </dl>
+    </div>
+  </aside>
+
+  <dialog id="about">
+    <form method="dialog">
+      <h3>About FlyCoder</h3>
+      <h4>Real neural data</h4>
+      <ul>
+        <li>MaleCNS v1.0 connectome</li>
+        <li>166,700 neurons · 25,582,938 connections</li>
+        <li>FlyBrain leaky integrate-and-fire simulation</li>
+        <li>Real neuron identities, sensory and descending populations</li>
+        <li>Real simulated spike activity</li>
+      </ul>
+      <h4>Experimental interface</h4>
+      <ul>
+        <li>Webpage error encoding onto LC10a / LPLC1 / LC4 / LPLC2</li>
+        <li>Action cursor driven by DNa02 laterality</li>
+        <li>Semantic CSS actions, not generated source text</li>
+        <li>Q-assisted selector and idle commit live outside the connectome</li>
+        <li>Reward does not change MaleCNS weights</li>
+      </ul>
+      <h4>3D embodied visualization</h4>
+      <ul>
+        <li>Original procedural Drosophila built with Three.js primitives</li>
+        <li>The connectome panel is a spatial visualization of real MaleCNS soma positions and sampled real synaptic edges. It does not display complete neuron morphology.</li>
+        <li>Wing taps are an embodied visualization of FlyCoder control channels, not Drosophila motor physiology.</li>
+      </ul>
+      <p class="disclaimer">
+        The 3D fly is an embodied visualization of FlyCoder control signals.
+        It is not a biomechanically complete Drosophila locomotion simulation.
+        The body animation is an experimental visualization of descending control activity.
+        It is not a full musculoskeletal reconstruction of Drosophila biomechanics.
+      </p>
+      <h4>Attribution</h4>
+      <ul>
+        <li>Connectome: MaleCNS v1.0, FlyEM / HHMI Janelia et al., CC BY 4.0</li>
+        <li>Simulation: fly.ai FlyBrain (MIT)</li>
+        <li>3D renderer: Three.js (MIT)</li>
+        <li>3D fly mesh: original procedural model in fly3d.js (no third-party mesh)</li>
+      </ul>
+      <button type="submit">CLOSE</button>
+    </form>
+  </dialog>
+
+  <script src="/vendor/three.min.js"></script>
+  <script src="/cns3d.js"></script>
+  <script src="/fly_motion.js"></script>
+  <script src="/fly3d.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Optional: run the brain on an NVIDIA GPU (CUDA 12+ driver). Then set FLY_DEVICE=cuda
+# or pass FlyBrain(device="cuda").
+-r requirements.txt
+cupy-cuda12x[ctk]>=13
