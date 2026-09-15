@@ -79,6 +79,11 @@ id_*
 /flytalk.py
 /flyreservoir_example.py
 /vercel.json
+/.dockerignore
+/docs/.nojekyll
+/docs/robots.txt
+/docs/sitemap.xml
+/scripts/vercel-build.sh
 /docs/agents.html
 /docs/index.html
 /docs/llms.txt
